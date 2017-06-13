@@ -34,10 +34,19 @@ ros::Publisher pub_mavros;
 //}
 void joystick_callback(const sensor_msgs::Joy::ConstPtr& msg)
 {
-	for (int i; i <= 8; i++)
+	for (int i=0; i < 8; i++)
 	{
 		axes_input[i] = msg->axes[i];
-		ROS_INFO_STREAM(axes_input);
+		ROS_INFO_STREAM("BREAK");
+		ROS_INFO_STREAM(axes_input[0]);
+		ROS_INFO_STREAM(axes_input[1]);
+		ROS_INFO_STREAM(axes_input[2]);
+		ROS_INFO_STREAM(axes_input[3]);
+		ROS_INFO_STREAM(axes_input[4]);
+		ROS_INFO_STREAM(axes_input[5]);
+		ROS_INFO_STREAM(axes_input[6]);
+		ROS_INFO_STREAM(axes_input[7]);
+		ROS_INFO_STREAM(axes_input[8]);
 	}
 }
 
@@ -95,10 +104,10 @@ int main(int argc, char **argv)
 		//throttle is up down
 		
 		//set channel equal to value of the joystick and then change it to fit between (1000,2000) for pwm signals
-		MAV_MSG.channels[ROLL_CHAN] = ((axes_input[1])*500)+1500;
-		MAV_MSG.channels[PITCH_CHAN] = ((axes_input[2])*500)+1500;
-		MAV_MSG.channels[THROT_CHAN] = ((axes_input[5])*500)+1500;
-		MAV_MSG.channels[YAW_CHAN] = ((axes_input[4])*500)+1500;
+		MAV_MSG.channels[ROLL_CHAN] = ((axes_input[0])*500)+1500;
+		MAV_MSG.channels[PITCH_CHAN] = ((axes_input[1])*500)+1500;
+		MAV_MSG.channels[THROT_CHAN] = ((axes_input[4])*500)+1500;
+		MAV_MSG.channels[YAW_CHAN] = ((axes_input[3])*500)+1500;
 		MAV_MSG.channels[MODES_CHAN] = HIGH_PWM;
 	
 		//Z-axis movement
