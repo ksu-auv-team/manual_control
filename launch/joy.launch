@@ -1,0 +1,4 @@
+<launch>
+<!--start joystick node-->
+<node name="joy_input" pkg="manual_control" type="joystick_setup.sh" />
+</launch>
