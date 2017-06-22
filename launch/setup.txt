@@ -1,0 +1,26 @@
+run command:
+
+ls -l /dev/input/
+
+find entry either:
+
+js0, js1
+
+run command to test joystick, the one appended with '+' is the active one
+
+sudo jstest /dev/input/jsX
+
+where x = 1, or 2
+
+when you find the working joystick, run
+
+sudo chmod a+rw /dev/input/jsX
+
+run this command only when these are satisfied:
+roscore is active on the sub
+oy
+rosparam set joy_node/dev "/dev/input/jsX"
+
+then run:
+
+roslaunch manual_control joy.launch

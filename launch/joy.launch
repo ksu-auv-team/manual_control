@@ -1,4 +1,9 @@
 <launch>
-<!--start joystick node-->
-<node name="joy_input" pkg="manual_control" type="joystick_setup.sh" />
+<!--start joystick node
+<node name="manual_setup" pkg="manual_control" type="joystick_setup.sh" />
+-->
+<!--start joystick pub-->
+<node name="joy" pkg="joy" type="joy_node"/>
+<!--start joystick to mavros-->
+<node name="manual_control" pkg="manual_control" type="manual_control"/>
 </launch>
